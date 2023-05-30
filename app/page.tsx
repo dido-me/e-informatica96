@@ -1,95 +1,47 @@
 import Image from 'next/image'
-import styles from './page.module.css'
 
-export default function Home() {
+export default function Home () {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
+    <main>
+      <section className='w-full flex justify-center'>
+        <div className='carousel w-[95vw] rounded-lg'>
+          <div id='slide1' className='carousel-item relative w-full'>
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+              src='/carousel-home/slide1.png'
+              alt='Slide1'
+              width={1120}
+              height={400}
+              style={{ objectFit: 'contain', width: '100vw' }}
             />
-          </a>
+            <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
+              <a href='#slide4' className='btn btn-circle'>
+                ❮
+              </a>
+              <a href='#slide2' className='btn btn-circle'>
+                ❯
+              </a>
+            </div>
+          </div>
+          <div id='slide2' className='carousel-item relative w-full'>
+            <Image
+              src='/carousel-home/slide2.png'
+              alt='Slide2'
+              width={1120}
+              height={400}
+              style={{ objectFit: 'cover', width: '100vw' }}
+            />
+            <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
+              <a href='#slide1' className='btn btn-circle '>
+                ❮
+              </a>
+              <a href='#slide3' className='btn btn-circle '>
+                ❯
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      </section>
+      <h1>Hola</h1>
     </main>
   )
 }
