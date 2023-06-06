@@ -1,6 +1,6 @@
 import './globals.css'
 import type { ReactNode } from 'react'
-import { Navbar } from './components'
+import { Navbar, ShoppingButton } from './components'
 
 export const metadata = {
   title:
@@ -12,9 +12,10 @@ export const metadata = {
 export default function RootLayout ({ children }: { children: ReactNode }) {
   return (
     <html lang='es'>
-      <body className='dark:bg-[#0A101A]'>
+      <body className='dark:bg-[#0A101A] '>
         <Navbar />
         {children}
+        <ShoppingButton />
       </body>
     </html>
   )

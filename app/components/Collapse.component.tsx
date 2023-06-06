@@ -5,13 +5,11 @@ import { BsFillCircleFill } from 'react-icons/bs'
 function Collapse ({
   parentCategory,
   idParedCategory,
-  indexCollapse,
-  changeCollapse
+  changeCollapse,
+  cheked
 }: any) {
-  const isOpen = indexCollapse === idParedCategory
-
   const handleCollapse = () => {
-    if (isOpen) {
+    if (cheked) {
       changeCollapse(0)
     } else {
       changeCollapse(idParedCategory)
@@ -31,16 +29,20 @@ function Collapse ({
     }
   ]
 
+  const handleCheked = (e:any) => {
+    // console.log(e.target.value)
+  }
+
   return (
     <div className='collapse '>
-      <input type='checkbox' checked={isOpen} onChange={handleCollapse} />
+      <input type='checkbox' checked={cheked} onChange={handleCollapse} />
       <button
         className={`collapse-title  flex justify-between items-center px-10 ${
-          isOpen && 'text-[#C18D21]'
+          cheked && 'text-[#C18D21]'
         }`}
       >
         <span>{parentCategory}</span>
-        {isOpen
+        {cheked
           ? (
             <IoMdArrowDropdown size={25} />
             )
@@ -49,21 +51,19 @@ function Collapse ({
             )}
       </button>
       <ul className='collapse-content ml-6 flex flex-col gap-4'>
-        {SUBCATEGORIES.map((subCategory, index) => (
-          <li
-            key={subCategory.id}
-            className='flex items-center justify-between'
-          >
-            <input
-              id={index.toString()}
-              className='hidden peer/cat'
-              type='radio'
-              name={idParedCategory}
-            />
-            <label htmlFor={index.toString()} className='cursor-pointer'>
-              {subCategory.name}
+        {cheked && SUBCATEGORIES.map((subCategory) => (
+          <li key={subCategory.id}>
+            <label className='flex items-center justify-between'>
+              <input
+                type='radio'
+                name='subcategory'
+                className='hidden peer/subcat'
+                value={subCategory.id}
+                onChange={handleCheked}
+              />
+              <span className='cursor-pointer'>{subCategory.name}</span>
+              <BsFillCircleFill className='mr-7 text-transparent peer-checked/subcat:text-[#C18D21]' />
             </label>
-            <BsFillCircleFill className='mr-7 text-transparent peer-checked/cat:text-[#C18D21]' />
           </li>
         ))}
       </ul>

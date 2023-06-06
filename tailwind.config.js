@@ -5,7 +5,11 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      gridTemplateColumns: {
+        'auto-fill-20rem': 'repeat(auto-fill, minmax(min(100%, 20rem), 1fr))'
+      }
+    }
   },
   plugins: [require('daisyui')]
 }
