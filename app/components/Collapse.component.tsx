@@ -37,11 +37,11 @@ function Collapse ({
     <div className='collapse '>
       <input type='checkbox' checked={cheked} onChange={handleCollapse} />
       <button
-        className={`collapse-title  flex justify-between items-center px-10 ${
+        className={`collapse-title  flex justify-between items-center px-10  ${
           cheked && 'text-[#C18D21]'
         }`}
       >
-        <span>{parentCategory}</span>
+        <span className='text-left'>{parentCategory}</span>
         {cheked
           ? (
             <IoMdArrowDropdown size={25} />

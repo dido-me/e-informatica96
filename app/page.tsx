@@ -1,15 +1,22 @@
 import { Carousel, GroupCollapse } from '@app/components'
 import Image from 'next/image'
+import { LuSettings2 } from 'react-icons/lu'
 
 export default function Home () {
   return (
     <main className='relative  '>
       <Carousel />
-      <section className='flex'>
-        <div className='w-[28rem] h-[85vh] sticky top-[15vh] pt-8   dark:bg-[#0C1F34] dark:shadow-[#1a2332] bg-zinc-100 rounded-tr-lg'>
+      <section className='flex flex-col xl:flex-row'>
+        <div className=' hidden xl:block w-[28rem] h-[85vh] sticky top-[15vh] pt-4   dark:bg-[#0C1F34] dark:shadow-[#1a2332] bg-zinc-100 rounded-tr-lg'>
           <GroupCollapse />
         </div>
-        <div className='w-full  px-8 py-6 dark:bg-[#0A101A]  '>
+        <div className='block sticky top-16 z-10 xl:hidden dark:bg-[#0C1F34] dark:shadow-[#1a2332] bg-zinc-100 px-10 py-6'>
+          <button className='btn btn-outline flex gap-2'>
+            <LuSettings2 />
+            Filtros
+          </button>
+        </div>
+        <div className='w-full  px-8 pt-8 xl:pt-0  pb-24 dark:bg-[#0A101A]  '>
           <div className='w-full grid grid-cols-auto-fill-20rem gap-4'>
             <article className='dark:bg-[#0C1F34] bg-zinc-100 rounded drop-shadow-md py-5 px-3 flex flex-col items-center gap-6'>
               <div className='w-full relative'>
@@ -30,7 +37,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -53,7 +60,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -76,7 +83,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -99,7 +106,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -122,7 +129,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -145,7 +152,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -168,7 +175,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -191,7 +198,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -214,7 +221,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -237,7 +244,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -260,7 +267,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -283,7 +290,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -306,7 +313,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -329,7 +336,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -352,7 +359,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -375,7 +382,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -398,7 +405,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -421,7 +428,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
@@ -444,7 +451,7 @@ export default function Home () {
                   DELL DISCO DURO SERVIDOR POWERDGE 8TB SAS 12G 3.5” 044YFV
                 </p>
               </div>
-              <button className='btn w-fit flex gap-2 items-center'>
+              <button className='btn btn-outline w-fit flex gap-2 items-center'>
                 <span className='text-xs'>Agregar al carrito</span>
               </button>
             </article>
