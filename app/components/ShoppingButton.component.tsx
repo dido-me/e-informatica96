@@ -1,8 +1,18 @@
+'use client'
+
+import { sharingStateShoppingCartModal } from '@src/services/sharing-state.service'
 import { FaShoppingCart } from 'react-icons/fa'
 
 function ShoppingButton () {
+  const openModal = () => {
+    sharingStateShoppingCartModal.setSubject(true)
+  }
+
   return (
-    <button className='fixed top-1/2 right-0 z-20 bg-black hover:bg-slate-900 px-5 py-3 flex flex-col gap-4 rounded-md'>
+    <button
+      className='hidden top-1/2 right-0 z-20 bg-black hover:bg-slate-900 px-5 py-3 xl:flex flex-col gap-4 rounded-md xl:fixed'
+      onClick={openModal}
+    >
       <div className='flex gap-3 text-white '>
         <span>
           <FaShoppingCart />

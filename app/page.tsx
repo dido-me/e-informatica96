@@ -1,8 +1,15 @@
+'use client'
+
 import { Carousel, GroupCollapse } from '@app/components'
+import { sharingStateFiltersModal } from '@src/services/sharing-state.service'
 import Image from 'next/image'
 import { LuSettings2 } from 'react-icons/lu'
 
 export default function Home () {
+  const openFiltersModal = () => {
+    sharingStateFiltersModal.setSubject(true)
+  }
+
   return (
     <main className='relative  '>
       <Carousel />
@@ -11,7 +18,7 @@ export default function Home () {
           <GroupCollapse />
         </div>
         <div className='block sticky top-16 z-10 xl:hidden dark:bg-[#0C1F34] dark:shadow-[#1a2332] bg-zinc-100 px-10 py-6'>
-          <button className='btn btn-outline flex gap-2'>
+          <button className='btn btn-outline flex gap-2' onClick={openFiltersModal}>
             <LuSettings2 />
             Filtros
           </button>
