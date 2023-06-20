@@ -1,4 +1,4 @@
-import { SubjectManager } from '@src/utilities/subject-manager'
+import { SubjectManager } from '@src/utilities'
 
 export const sharingStateShoppingCartModal = new SubjectManager()
 

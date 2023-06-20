@@ -3,7 +3,7 @@ import { FaShoppingCart } from 'react-icons/fa'
 import { RiCloseCircleFill } from 'react-icons/ri'
 import { useEffect, useState } from 'react'
 import ReactModal from 'react-modal'
-import { sharingStateShoppingCartModal } from '@src/services/sharing-state.service'
+import { sharingStateShoppingCartModal } from '@src/services'
 
 ReactModal.setAppElement('#__next')
 

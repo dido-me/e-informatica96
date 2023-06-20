@@ -1,6 +1,6 @@
 import './globals.css'
 import type { ReactNode } from 'react'
-import { AsideFilters, AsideShopping, NavbarDesktop, NavbarMobile, ShoppingButton } from './components'
+import { AsideShopping, NavbarDesktop, NavbarMobile, ShoppingButton } from './components'
 
 export const metadata = {
   title:
@@ -17,7 +17,6 @@ export default function RootLayout ({ children }: { children: ReactNode }) {
         {children}
         <ShoppingButton />
         <AsideShopping />
-        <AsideFilters />
         <NavbarMobile />
       </body>
     </html>

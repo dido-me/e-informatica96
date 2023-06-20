@@ -1,6 +1,6 @@
 'use client'
 
-import { sharingStateShoppingCartModal } from '@src/services/sharing-state.service'
+import { sharingStateShoppingCartModal } from '@src/services'
 import Link from 'next/link'
 import { FiMenu, FiSearch, FiHome, FiShoppingCart, FiUser } from 'react-icons/fi'
 

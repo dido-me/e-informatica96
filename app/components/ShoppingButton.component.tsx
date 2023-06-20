@@ -1,6 +1,6 @@
 'use client'
 
-import { sharingStateShoppingCartModal } from '@src/services/sharing-state.service'
+import { sharingStateShoppingCartModal } from '@src/services'
 import { FaShoppingCart } from 'react-icons/fa'
 
 function ShoppingButton () {
