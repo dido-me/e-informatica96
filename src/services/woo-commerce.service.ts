@@ -1,4 +1,5 @@
 import { ParentCategory } from '@src/models/category'
+import { Product } from '@src/models/product'
 
 const authHeader =
   'Basic ' + btoa(process.env.WOOUSERAPIKEY + ':' + process.env.WOOPASSAPIKEY)
@@ -48,11 +49,23 @@ export async function getCategorys () {
 }
 
 export async function getProducts () {
-  return await fetch(`${process.env.WOOBASEURL}/products?per_page=18`, {
-    headers: {
-      Authorization: authHeader
+  try {
+    const response = await fetch(
+      `${process.env.WOOBASEURL}/products?per_page=18`,
+      {
+        headers: {
+          Authorization: authHeader
+        }
+      }
+    )
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
     }
-  })
-    .then((res) => res.json())
-    .catch((err) => console.log(err))
+
+    return await response.json()
+  } catch (error) {
+    console.error(error)
+    return [] as Product[]
+  }
 }
