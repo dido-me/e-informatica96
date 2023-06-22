@@ -3,15 +3,20 @@ import {
   ButtonFilters,
   Carousel,
   GroupCollapse,
+  Pagination,
   ProductCard
 } from '@app/components'
 import { ParentCategory } from '@src/models/category'
 import { Product } from '@src/models/product'
 import { getCategorys, getProducts } from '@src/services'
 
-export default async function Home () {
+export default async function Home ({
+  searchParams: { p = '1' }
+}: {
+  searchParams: { p: string }
+}) {
   const categories: ParentCategory[] = await getCategorys()
-  const products : Product [] = await getProducts()
+  const { products, pages } = await getProducts({ page: p })
 
   return (
     <>
@@ -31,6 +36,7 @@ export default async function Home () {
                 <ProductCard product={product} key={product.id} />
               ))}
             </div>
+            <Pagination pages={pages} p={p} />
           </div>
         </section>
       </main>

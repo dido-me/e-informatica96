@@ -7,21 +7,22 @@ const authHeader =
 export async function getCategorys () {
   try {
     const response = await fetch(
-        `${process.env.WOOBASEURL}/products/categories?parent=0&per_page=100`,
-        {
-          headers: {
-            Authorization: authHeader
-          },
-          next: {
-            revalidate: 20
-          }
+      `${process.env.WOOBASEURL}/products/categories?parent=0&per_page=100`,
+      {
+        headers: {
+          Authorization: authHeader
+        },
+        next: {
+          revalidate: 20
         }
+      }
     )
 
     const data = await response.json()
 
-    const allCategorys = await Promise.all(data.map(async (parent: ParentCategory) => {
-      const res = await fetch(
+    const allCategorys = await Promise.all(
+      data.map(async (parent: ParentCategory) => {
+        const res = await fetch(
           `${process.env.WOOBASEURL}/products/categories?parent=${parent.id}&per_page=100`,
           {
             headers: {
@@ -31,15 +32,16 @@ export async function getCategorys () {
               revalidate: 20
             }
           }
-      )
+        )
 
-      const childrens = await res.json()
+        const childrens = await res.json()
 
-      return {
-        ...parent,
-        childrens
-      }
-    }))
+        return {
+          ...parent,
+          childrens
+        }
+      })
+    )
 
     return allCategorys
   } catch (err) {
@@ -48,13 +50,16 @@ export async function getCategorys () {
   }
 }
 
-export async function getProducts () {
+export async function getProducts ({ page }:{page:string}) {
   try {
     const response = await fetch(
-      `${process.env.WOOBASEURL}/products?per_page=18`,
+      `${process.env.WOOBASEURL}/products?per_page=18&page=${page}`,
       {
         headers: {
           Authorization: authHeader
+        },
+        next: {
+          revalidate: 20
         }
       }
     )
@@ -63,9 +68,19 @@ export async function getProducts () {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
 
-    return await response.json()
+    const totalPages = response.headers.get('x-wp-totalpages')
+
+    const data = await response.json()
+
+    return {
+      products: data as Product[],
+      pages: parseInt(totalPages as string)
+    }
   } catch (error) {
     console.error(error)
-    return [] as Product[]
+    return {
+      products: [] as Product[],
+      pages: 0
+    }
   }
 }
