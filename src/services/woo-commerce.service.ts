@@ -84,3 +84,57 @@ export async function getProducts ({ page }:{page:string}) {
     }
   }
 }
+
+export async function getProduct ({ slug }:{slug:string}) {
+  try {
+    const response = await fetch(
+      `${process.env.WOOBASEURL}/products?slug=${slug}`,
+      {
+        headers: {
+          Authorization: authHeader
+        },
+        next: {
+          revalidate: 20
+        }
+      }
+    )
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    const data = await response.json()
+
+    return data[0] as Product
+  } catch (error) {
+    console.error(error)
+    return {} as Product
+  }
+}
+
+export async function getProductById ({ idProduct }:{idProduct:number}) {
+  try {
+    const response = await fetch(
+      `${process.env.WOOBASEURL}/products/${idProduct}`,
+      {
+        headers: {
+          Authorization: authHeader
+        },
+        next: {
+          revalidate: 20
+        }
+      }
+    )
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    const data = await response.json()
+
+    return data as Product
+  } catch (error) {
+    console.error(error)
+    return {} as Product
+  }
+}
