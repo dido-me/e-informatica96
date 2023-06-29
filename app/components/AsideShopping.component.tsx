@@ -1,9 +1,9 @@
 'use client'
 import { FaShoppingCart } from 'react-icons/fa'
 import { RiCloseCircleFill } from 'react-icons/ri'
-import { useEffect, useState } from 'react'
 import ReactModal from 'react-modal'
 import { sharingStateShoppingCartModal } from '@src/services'
+import { useOpenComponent } from '@src/hooks'
 
 ReactModal.setAppElement('#__next')
 
@@ -27,17 +27,7 @@ const modalStyles = {
 const subcribe = sharingStateShoppingCartModal.getSubject()
 
 function AsideShopping () {
-  const [isOpen, setIsOpen] = useState(false)
-
-  useEffect(() => {
-    const subscription = subcribe.subscribe((value: boolean) => {
-      setIsOpen(value)
-    })
-
-    return () => {
-      subscription.unsubscribe()
-    }
-  }, [])
+  const isOpen = useOpenComponent({ subcribe })
 
   const closeModal = () => {
     sharingStateShoppingCartModal.setSubject(false)

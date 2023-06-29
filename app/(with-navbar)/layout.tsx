@@ -1,11 +1,18 @@
 import '@app/globals.css'
-import { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import {
+  AsideShopping,
+  NavbarDesktop,
+  NavbarMobile,
+  ShoppingButton,
+  WhatsAppChatButton
+} from '@app/components'
+import { Metadata } from 'next'
 
-export const metadata : Metadata = {
+export const metadata: Metadata = {
   title: {
     template:
-      '%s | Informatica 96',
+      '%s | Informatica 96 | Alquiler y Venta de Server Switch Transceiver Computadora | Importador y Distribuidor',
     default:
       'Informatica 96 | Alquiler y Venta de Server Switch Transceiver Computadora | Importador y Distribuidor'
   },
@@ -16,8 +23,13 @@ export const metadata : Metadata = {
 
 export default function RootLayout ({ children }: { children: ReactNode }) {
   return (
-    <html lang='es' id='__next'>
-      <body className='dark:bg-[#0A101A] min-h-screen'>{children}</body>
-    </html>
+    <>
+      <NavbarDesktop />
+      {children}
+      <ShoppingButton />
+      <AsideShopping />
+      <NavbarMobile />
+      <WhatsAppChatButton />
+    </>
   )
 }
