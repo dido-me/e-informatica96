@@ -3,6 +3,7 @@
 import algoliasearch from 'algoliasearch/lite'
 import {
   Configure,
+  Highlight,
   Hits,
   InstantSearch,
   SearchBox
@@ -16,13 +17,15 @@ const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_API_KEY || ''
 )
 
-function Hit ({ hit }: any) {
+function HitCustom ({ hit }: any) {
   const url = new URL(hit.permalink)
   const pathSegments = url.pathname.split('/')
   const productSlug = pathSegments[pathSegments.length - 2]
   return (
     <Link href={`/producto/${productSlug}`}>
-      <div className='p-4 border-b border-gray-200'>{hit.post_title}</div>
+      <div className='p-4 border-b border-gray-200'>
+        <Highlight attribute='post_title' hit={hit} />
+      </div>
     </Link>
   )
 }
@@ -54,12 +57,15 @@ function InputSearch () {
 
         {shouldShowHits && (
           <div
-            className='absolute w-full '
+            className='absolute w-full mt-2 '
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
           >
             <Configure hitsPerPage={6} />
-            <Hits hitComponent={Hit} className='bg-slate-100' />
+            <Hits
+              hitComponent={HitCustom}
+              className='rounded-md bg-slate-100'
+            />
           </div>
         )}
       </div>
