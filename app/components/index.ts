@@ -1,6 +1,8 @@
 export { default as AsideShopping } from './AsideShopping.component'
 export { default as Carousel } from './Carousel.component'
 export { default as Collapse } from './Collapse.component'
+export { default as CookieBanner } from './CookieBanner.component'
+export { default as GoogleAnalytics } from './GoogleAnalytics.component'
 export { default as InputSearch } from './InputSearch.component'
 export { default as NavbarDesktop } from './NavbarDesktop.component'
 export { default as NavbarMobile } from './NavbarMobile.component'

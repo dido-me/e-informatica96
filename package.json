@@ -14,6 +14,7 @@
     "@types/react": "18.2.13",
     "@types/react-dom": "18.2.4",
     "algoliasearch": "^4.18.0",
+    "client-only": "^0.0.1",
     "country-flag-icons": "^1.5.7",
     "daisyui": "^2.51.6",
     "eslint": "8.41.0",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.3",
     "@commitlint/config-conventional": "^17.6.3",
+    "@types/gtag.js": "^0.0.12",
     "@types/react-modal": "^3.16.0",
     "autoprefixer": "^10.4.14",
     "husky": "^8.0.3",
