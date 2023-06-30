@@ -1,0 +1,1 @@
+export const keywords = ['Computadora', 'Firewall', 'Blade', 'Servidor', 'Storage', 'Switch', 'Cisco', 'DELL', 'EMC', 'Fortinet', '3PAR', 'HP', 'IBM', 'Lenovo', 'Huawei', 'Juniper', 'Oracle', '#Cisco', '#HP', '#DELL', '#Lenovo', '#Switch', '#Servidor', '#Server', '#AccesPoint', '#Transceiver', 'Google', '#Google', 'peru', '#peru', 'lima', '#lima']

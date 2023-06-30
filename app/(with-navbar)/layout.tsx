@@ -8,6 +8,7 @@ import {
   WhatsAppChatButton
 } from '@app/components'
 import { Metadata } from 'next'
+import { keywords } from '@src/utilities'
 
 export const metadata: Metadata = {
   title: {
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   },
   description:
     'Computadora Firewall Blade Servidor Storage Switch Cisco DELL EMC Fortinet 3PAR HP IBM Lenovo Huawei Juniper Oracle #Cisco #HP #DELL #Lenovo #Switch #Servidor #Server #AccesPoint #Transceiver Google #Google',
-  keywords: ['Computadora', 'Firewall', 'Blade', 'Servidor', 'Storage', 'Switch', 'Cisco', 'DELL', 'EMC', 'Fortinet', '3PAR', 'HP', 'IBM', 'Lenovo', 'Huawei', 'Juniper', 'Oracle', '#Cisco', '#HP', '#DELL', '#Lenovo', '#Switch', '#Servidor', '#Server', '#AccesPoint', '#Transceiver', 'Google', '#Google']
+  keywords
 }
 
 export default function RootLayout ({ children }: { children: ReactNode }) {
