@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   description:
     'Computadora Firewall Blade Servidor Storage Switch Cisco DELL EMC Fortinet 3PAR HP IBM Lenovo Huawei Juniper Oracle #Cisco #HP #DELL #Lenovo #Switch #Servidor #Server #AccesPoint #Transceiver Google #Google',
-  keywords: ['Computadora', 'Servidor', 'Switch', 'Transceiver', 'Cisco']
+  keywords: ['Computadora', 'Firewall', 'Blade', 'Servidor', 'Storage', 'Switch', 'Cisco', 'DELL', 'EMC', 'Fortinet', '3PAR', 'HP', 'IBM', 'Lenovo', 'Huawei', 'Juniper', 'Oracle', '#Cisco', '#HP', '#DELL', '#Lenovo', '#Switch', '#Servidor', '#Server', '#AccesPoint', '#Transceiver', 'Google', '#Google']
 }
 
 export default function RootLayout ({ children }: { children: ReactNode }) {

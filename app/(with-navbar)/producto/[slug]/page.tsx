@@ -19,7 +19,19 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
 
   return {
     title: product.name,
-    description: product.description
+    description: product.description,
+    twitter: {
+      card: 'summary_large_image'
+    },
+    openGraph: {
+      title: product.name,
+      description: product.description,
+      images: product.images.map((image) => ({
+        url: image.src,
+        width: 300
+      })),
+      authors: ['Informatica96']
+    }
   }
 }
 
@@ -29,7 +41,7 @@ async function ProductBySlug ({ params }: Props) {
   if (!product) {
     if (!product) return redirect('/404')
   }
-  const productUrl = product.permalink
+  const productUrl = `${process.env.NEXT_PUBLIC_DOMAIN || ''}/producto/${product.slug}`
   const whatsappMessage = encodeURIComponent(
     'Hola Informatica96 Quiero saber mas sobre sus productos. Puedes ver el producto aquí: '
   )
