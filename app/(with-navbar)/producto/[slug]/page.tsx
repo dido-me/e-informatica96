@@ -1,7 +1,11 @@
 import { getProductBySlug } from '@src/services'
-import { CarouselProduct, RelatedProductCard } from '@app/(with-navbar)/producto/components'
+import {
+  CarouselProduct,
+  RelatedProductCard
+} from '@app/(with-navbar)/producto/components'
 import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
+import { removeHtmlTags } from '@src/utilities'
 
 type Props = {
   params: { slug: string }
@@ -19,13 +23,13 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
 
   return {
     title: product.name,
-    description: product.description,
+    description: removeHtmlTags(product.description),
     twitter: {
       card: 'summary_large_image'
     },
     openGraph: {
       title: product.name,
-      description: product.description,
+      description: removeHtmlTags(product.description),
       images: product.images.map((image) => ({
         url: image.src,
         width: 300
@@ -41,7 +45,9 @@ async function ProductBySlug ({ params }: Props) {
   if (!product) {
     if (!product) return redirect('/404')
   }
-  const productUrl = `${process.env.NEXT_PUBLIC_DOMAIN || ''}/producto/${product.slug}`
+  const productUrl = `${process.env.NEXT_PUBLIC_DOMAIN || ''}/producto/${
+    product.slug
+  }`
   const whatsappMessage = encodeURIComponent(
     'Hola Informatica96 Quiero saber mas sobre sus productos. Puedes ver el producto aquí: '
   )
