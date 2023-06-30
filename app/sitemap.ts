@@ -12,7 +12,7 @@ export default async function sitemap (): Promise<MetadataRoute.Sitemap> {
     for (const product of products) {
       allUrls.push({
         url: `${process.env.NEXT_PUBLIC_DOMAIN}/producto/${product.slug}`,
-        lastModified: product.date_modified
+        lastModified: new Date(product.date_modified).toISOString()
       })
     }
   }
