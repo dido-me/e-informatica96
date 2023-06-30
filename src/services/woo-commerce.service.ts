@@ -72,6 +72,7 @@ export async function getProducts ({ page }:{page:string}) {
 
     const data = await response.json()
 
+    // Provicional para la version 1.0 beta
     const filteredProducts = data.filter((product: Product) =>
       !product.categories.some(category => category.id === 287)
     )
