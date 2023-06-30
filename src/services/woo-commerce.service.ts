@@ -53,7 +53,7 @@ export async function getCategorys () {
 export async function getProducts ({ page }:{page:string}) {
   try {
     const response = await fetch(
-      `${process.env.WOOBASEURL}/products?per_page=18&page=${page}`,
+      `${process.env.WOOBASEURL}/products?per_page=16&page=${page}`,
       {
         headers: {
           Authorization: authHeader
@@ -72,8 +72,12 @@ export async function getProducts ({ page }:{page:string}) {
 
     const data = await response.json()
 
+    const filteredProducts = data.filter((product: Product) =>
+      !product.categories.some(category => category.id === 287)
+    )
+
     return {
-      products: data as Product[],
+      products: filteredProducts as Product[],
       pages: parseInt(totalPages as string)
     }
   } catch (error) {

@@ -1,8 +1,4 @@
-import {
-  Carousel,
-  Pagination,
-  ProductCard
-} from '@app/components'
+import { Carousel, Pagination, ProductCard } from '@app/components'
 import { Product } from '@src/models/product'
 import { getProducts } from '@src/services'
 import { redirect } from 'next/navigation'
