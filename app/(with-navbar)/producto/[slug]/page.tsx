@@ -61,7 +61,7 @@ async function ProductBySlug ({ params }: Props) {
         </section>
         <section className='flex flex-col gap-4 py-10  w-full xl:w-[50%]'>
           <h2>{product.name}</h2>
-          <span>{product.slug}</span>
+          <span>{product.sku === '' ? product.slug : product.sku}</span>
           <span className='flex items-center gap-2 py-6'>
             <ins className='text-4xl font-bold no-underline'>
               ${product.price}
