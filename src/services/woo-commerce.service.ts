@@ -65,11 +65,14 @@ export async function getProducts ({ page }:{page:string}) {
     )
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
+      console.error(`HTTP error! status: ${response.status}`)
+      return {
+        products: [] as Product[],
+        pages: 0
+      }
     }
 
     const totalPages = response.headers.get('x-wp-totalpages')
-
     const data = await response.json()
 
     // Provicional para la version 1.0 beta
@@ -83,9 +86,10 @@ export async function getProducts ({ page }:{page:string}) {
     }
   } catch (error) {
     console.error(error)
+
     return {
       products: [] as Product[],
-      pages: 0
+      pages: -1
     }
   }
 }

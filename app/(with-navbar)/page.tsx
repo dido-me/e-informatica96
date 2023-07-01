@@ -15,7 +15,13 @@ export default async function Home ({
 }) {
   const { products, pages } = await getProducts({ page: p })
 
-  if (products.length === 0) redirect('/')
+  if (pages === -1) {
+    redirect('/503')
+  }
+
+  if (Number(p) > pages || pages === 0) {
+    redirect('/404')
+  }
 
   return (
     <>

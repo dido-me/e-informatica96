@@ -24,9 +24,6 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
   return {
     title: product.name,
     description: removeHtmlTags(product.description),
-    twitter: {
-      card: 'summary_large_image'
-    },
     openGraph: {
       title: product.name,
       description: removeHtmlTags(product.description),
