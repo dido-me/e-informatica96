@@ -1,5 +1,6 @@
 export * from './calculate-discount'
 export * from './gtagHelper'
+export * from './helpers'
 export * from './keywords'
 export * from './removeHtmlTags'
 export * from './storageHelper'

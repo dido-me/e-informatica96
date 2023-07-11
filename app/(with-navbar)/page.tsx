@@ -34,7 +34,7 @@ export default async function Home ({
                 <ProductCard product={product} key={product.id} />
               ))}
             </div>
-            <Pagination pages={pages} p={p} />
+            {/* <Pagination pages={pages} p={p} /> */}
           </div>
         </section>
       </main>

@@ -29,7 +29,7 @@ export default function RootLayout ({ children }: { children: ReactNode }) {
       {children}
       <ShoppingButton />
       <AsideShopping />
-      <NavbarMobile />
+      {/* <NavbarMobile /> */}
       <WhatsAppChatButton />
     </>
   )
