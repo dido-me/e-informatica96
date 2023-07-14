@@ -2,8 +2,7 @@
 import { FaShoppingCart } from 'react-icons/fa'
 import { RiCloseCircleFill } from 'react-icons/ri'
 import ReactModal from 'react-modal'
-import { sharingStateShoppingCartModal } from '@src/services'
-import { useOpenComponent } from '@src/hooks'
+import { useOpenShoppingCart } from '@src/hooks'
 
 ReactModal.setAppElement('#__next')
 
@@ -24,15 +23,8 @@ const modalStyles = {
   }
 }
 
-const subcribe = sharingStateShoppingCartModal.getSubject()
-
 function AsideShopping () {
-  const isOpen = useOpenComponent({ subcribe })
-
-  const closeModal = () => {
-    sharingStateShoppingCartModal.setSubject(false)
-  }
-
+  const { isOpen, closeModal } = useOpenShoppingCart()
   return (
     <ReactModal
       isOpen={isOpen}
@@ -41,8 +33,8 @@ function AsideShopping () {
       style={modalStyles}
     >
       <div className='w-screen sm:w-[30rem] h-screen  dark:bg-[#0C1F34] dark:shadow-[#1a2332] bg-zinc-100   flex flex-col justify-between  animate-fade-left '>
-        <section className='flex justify-between text-xl p-4 flex-none border-b-2 border-zinc-300'>
-          <div className='flex gap-3  items-center'>
+        <section className='flex justify-between flex-none p-4 text-xl border-b-2 border-zinc-300'>
+          <div className='flex items-center gap-3'>
             <FaShoppingCart />
             <span>0 Item</span>
           </div>
@@ -51,8 +43,8 @@ function AsideShopping () {
           </button>
         </section>
         <section className='grow'>Main</section>
-        <section className=' flex-none flex justify-center items-center p-6'>
-          <button className='btn w-full flex justify-between'>
+        <section className='flex items-center justify-center flex-none p-6 '>
+          <button className='flex justify-between w-full btn'>
             <span>Pagar</span>
             <span>$ 0.00</span>
           </button>

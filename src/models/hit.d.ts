@@ -24,6 +24,7 @@ export interface Images {
 }
 
 export interface Hit {
+  [index: string]: any
   post_id: number
   post_type: string
   post_type_label: string
@@ -44,4 +45,6 @@ export interface Hit {
   content: string
   record_index: number
   objectID: string
+  __position: number;
+  __queryID?: string;
 }

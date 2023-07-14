@@ -2,9 +2,8 @@ import '@app/globals.css'
 import type { ReactNode } from 'react'
 import {
   AsideShopping,
-  NavbarDesktop,
-  NavbarMobile,
-  ShoppingButton,
+  HeaderBanner,
+  Navbar,
   WhatsAppChatButton
 } from '@app/components'
 import { Metadata } from 'next'
@@ -25,11 +24,10 @@ export const metadata: Metadata = {
 export default function RootLayout ({ children }: { children: ReactNode }) {
   return (
     <>
-      <NavbarDesktop />
+      <HeaderBanner />
+      <Navbar />
       {children}
-      <ShoppingButton />
       <AsideShopping />
-      {/* <NavbarMobile /> */}
       <WhatsAppChatButton />
     </>
   )

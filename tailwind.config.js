@@ -6,6 +6,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'inf-primary': '#001f3d',
+        'inf-secondary': '#002952',
+        'inf-tertiary': '#003D7A',
+        'inf-quaternary': '#C9DF43'
+      },
       gridTemplateColumns: {
         'auto-fill-20rem': 'repeat(auto-fill, minmax(min(100%, 20rem), 1fr))'
       }

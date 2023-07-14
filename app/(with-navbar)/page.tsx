@@ -1,4 +1,4 @@
-import { Carousel, Pagination, ProductCard } from '@app/components'
+import { Carousel, ProductCard } from '@app/components'
 import { Product } from '@src/models/product'
 import { getProducts } from '@src/services'
 import { redirect } from 'next/navigation'
@@ -28,7 +28,7 @@ export default async function Home ({
       <main className='relative'>
         <Carousel />
         <section className='flex flex-col xl:flex-row'>
-          <div className='w-full  px-8 pt-8 xl:pt-0  pb-36 dark:bg-[#0A101A]  '>
+          <div className='w-full px-8 pt-8 xl:pt-0 pb-36 '>
             <div className='grid w-full gap-4 grid-cols-auto-fill-20rem'>
               {products.map((product: Product) => (
                 <ProductCard product={product} key={product.id} />

@@ -21,7 +21,7 @@ export default function RootLayout ({ children }: { children: ReactNode }) {
       <GoogleAnalytics
         GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ''}
       />
-      <body className='dark:bg-[#0A101A] min-h-screen relative'>
+      <body className='min-h-screen dark:bg-inf-primary '>
         {children}
         <CookieBanner />
       </body>
