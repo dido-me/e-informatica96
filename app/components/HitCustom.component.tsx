@@ -23,7 +23,7 @@ export function HitCustom (props: HtmlHTMLAttributes<HTMLUListElement>) {
               <li key={hit.objectID}>
                 <Link
                   href={`/producto/${extractSlugProduct(hit.permalink)}`}
-                  className='flex flex-col gap-1 py-4 border-b-2 border-white last:border-b-0'
+                  className='flex flex-col gap-1 py-4 border-b-2 border-white cursor-pointer last:border-b-0'
                 >
                   <Highlight attribute='post_title' hit={hit} className='text-xl' />
                   <span className='text-sm opacity-60'>

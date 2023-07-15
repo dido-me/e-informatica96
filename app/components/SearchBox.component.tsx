@@ -16,7 +16,7 @@ const searchClient = algoliasearch(
 )
 
 const searchBoxAlgoliaCustomClassNames: Partial<SearchBoxClassNames> = {
-  root: 'w-full ',
+  root: 'w-full peer',
   form: 'w-full flex  relative',
   input: 'w-full text-black input rounded-r-none bg-[#F6F7F8]',
   submit: 'btn bg-inf-secondary  rounded-l-none',
@@ -27,11 +27,8 @@ const searchBoxAlgoliaCustomClassNames: Partial<SearchBoxClassNames> = {
 const searchIcon = () => <HiOutlineSearch size={25} className='text-white' />
 
 export function SearchBox () {
-  const [isFocused, setFocused] = useState(false)
-  const [isHovering, setHovering] = useState(false)
   const [isLoaded, setLoaded] = useState(true)
-
-  const shouldShowHits = isFocused || isHovering
+  const [isOpenHit, setIsOpenHit] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -55,20 +52,16 @@ export function SearchBox () {
             classNames={searchBoxAlgoliaCustomClassNames}
             submitIconComponent={searchIcon}
             placeholder='Buscar en la tienda ...'
-            onFocus={() => setFocused(true)}
-            onBlur={() => setFocused(false)}
+            onFocus={() => setIsOpenHit(true)}
           />
-          {shouldShowHits && (
-            <HitCustom
-              className='absolute w-full px-4 py-2 mt-2 rounded-xl bg-[#F6F7F8] dark:bg-inf-secondary peer-focus:visible '
-              onMouseEnter={() => setHovering(true)}
-              onMouseLeave={() => setHovering(false)}
-              onClick={() => {
-                setFocused(false)
-                setHovering(false)
-              }}
-            />
-          )}
+          {
+            isOpenHit && (
+              <HitCustom
+                className='absolute w-full px-4 py-2 mt-2 rounded-xl bg-[#F6F7F8] dark:bg-inf-secondary z-20 peer-focus-within:block hidden hover:block'
+                onClick={() => setIsOpenHit(false)}
+              />
+            )
+          }
         </InstantSearch>
       </div>
       )
