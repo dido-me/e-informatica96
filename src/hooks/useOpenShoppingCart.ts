@@ -1,17 +1,22 @@
 import { sharingStateShoppingCartModal } from '@src/services'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { Subscription } from 'rxjs'
 
-const subcribe = sharingStateShoppingCartModal.getSubject()
 export const useOpenShoppingCart = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const subscriptionShopRef = useRef<Subscription | null>(null)
 
   useEffect(() => {
-    const subscription = subcribe.subscribe(() => {
-      setIsOpen((isOpen) => !isOpen)
-    })
+    subscriptionShopRef.current = sharingStateShoppingCartModal
+      .getSubject()
+      .subscribe(() => {
+        setIsOpen((isOpen) => !isOpen)
+      })
 
     return () => {
-      subscription.unsubscribe()
+      if (subscriptionShopRef.current) {
+        subscriptionShopRef.current.unsubscribe()
+      }
     }
   }, [])
 

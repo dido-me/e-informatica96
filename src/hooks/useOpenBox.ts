@@ -1,17 +1,22 @@
 import { sharingStateBoxSearch } from '@src/services'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { Subscription } from 'rxjs'
 
-const subcribe = sharingStateBoxSearch.getSubject()
 export const useOpenBox = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const subscriptionBoxRef = useRef<Subscription | null>(null)
 
   useEffect(() => {
-    const subscription = subcribe.subscribe(() => {
-      setIsOpen((isOpen) => !isOpen)
-    })
+    subscriptionBoxRef.current = sharingStateBoxSearch
+      .getSubject()
+      .subscribe(() => {
+        setIsOpen((isOpen) => !isOpen)
+      })
 
     return () => {
-      subscription.unsubscribe()
+      if (subscriptionBoxRef.current) {
+        subscriptionBoxRef.current.unsubscribe()
+      }
     }
   }, [])
 
