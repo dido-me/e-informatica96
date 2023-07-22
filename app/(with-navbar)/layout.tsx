@@ -1,6 +1,7 @@
 import '@app/globals.css'
 import type { ReactNode } from 'react'
 import {
+  AsideCategories,
   AsideShopping,
   HeaderBanner,
   Navbar,
@@ -28,6 +29,7 @@ export default function RootLayout ({ children }: { children: ReactNode }) {
       <Navbar />
       {children}
       <AsideShopping />
+      <AsideCategories />
       <WhatsAppChatButton />
     </>
   )

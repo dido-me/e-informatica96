@@ -20,13 +20,9 @@ export const useOpenBox = () => {
     }
   }, [])
 
-  const openBoxSearch = () => {
+  const changeState = () => {
     sharingStateBoxSearch.setSubject(true)
   }
 
-  const closeBoxSearch = () => {
-    sharingStateBoxSearch.setSubject(false)
-  }
-
-  return { isOpen, openBoxSearch, closeBoxSearch }
+  return { isOpen, changeState }
 }

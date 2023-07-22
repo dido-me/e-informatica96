@@ -1,6 +1,10 @@
 'use client'
 
-import { useOpenBox, useOpenShoppingCart } from '@src/hooks'
+import {
+  useOpenBox,
+  useOpenShoppingCart,
+  useOpenCategoriesModal
+} from '@src/hooks'
 import { LogoInformatica } from '@src/svgs'
 import Link from 'next/link'
 import { BiSearchAlt } from 'react-icons/bi'
@@ -12,8 +16,9 @@ import { ButtonMenu } from './ButtonMenu.component'
 import { LinkMenu } from './LinkMenu.component'
 
 export function MainNavbar () {
-  const { isOpen: isOpenBoxSearch, openBoxSearch } = useOpenBox()
+  const { isOpen: isOpenBoxSearch, changeState } = useOpenBox()
   const { openModal } = useOpenShoppingCart()
+  const { openModal: openModalCategories } = useOpenCategoriesModal()
 
   return (
     <section className='flex flex-col items-center w-11/12 gap-2 my-4 xl:gap-10 text-inf-primary dark:text-white xl:flex-row '>
@@ -33,7 +38,10 @@ export function MainNavbar () {
         <SearchBox />
       </div>
       <div className='flex justify-center xl:justify-evenly basis-1/4'>
-        <button className='block btn btn-ghost xl:hidden '>
+        <button
+          className='block btn btn-ghost xl:hidden '
+          onClick={openModalCategories}
+        >
           <MdMenu className='text-3xl' />
         </button>
         <LinkMenu
@@ -52,7 +60,7 @@ export function MainNavbar () {
           Icon={BiSearchAlt}
           text='Buscar Producto'
           className='flex gap-1 xl:gap-3 btn btn-ghost text-start xl:hidden'
-          onClick={openBoxSearch}
+          onClick={changeState}
         />
       </div>
     </section>

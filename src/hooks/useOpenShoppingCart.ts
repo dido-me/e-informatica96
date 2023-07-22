@@ -9,8 +9,8 @@ export const useOpenShoppingCart = () => {
   useEffect(() => {
     subscriptionShopRef.current = sharingStateShoppingCartModal
       .getSubject()
-      .subscribe(() => {
-        setIsOpen((isOpen) => !isOpen)
+      .subscribe((data) => {
+        setIsOpen(data)
       })
 
     return () => {
