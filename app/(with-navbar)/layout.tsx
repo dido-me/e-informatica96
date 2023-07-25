@@ -9,6 +9,8 @@ import {
 } from '@app/components'
 import { Metadata } from 'next'
 import { keywords } from '@src/utilities'
+import { getCategories } from '@src/services'
+import { ParentCategory } from '@src/models/category'
 
 export const metadata: Metadata = {
   title: {
@@ -22,14 +24,16 @@ export const metadata: Metadata = {
   keywords
 }
 
-export default function RootLayout ({ children }: { children: ReactNode }) {
+export default async function RootLayout ({ children }: { children: ReactNode }) {
+  const dataCategories: ParentCategory[] = await getCategories()
+
   return (
     <>
       <HeaderBanner />
-      <Navbar />
+      <Navbar categories={dataCategories} />
       {children}
+      <AsideCategories categories={dataCategories} />
       <AsideShopping />
-      <AsideCategories />
       <WhatsAppChatButton />
     </>
   )

@@ -1,3 +1,4 @@
+export * from './auth-header-api-woo'
 export * from './calculate-discount'
 export * from './gtagHelper'
 export * from './helpers'

@@ -1,9 +1,10 @@
 'use client'
 
-import { FaShoppingCart } from 'react-icons/fa'
+import { BiCategory } from 'react-icons/bi'
 import { RiCloseCircleFill } from 'react-icons/ri'
 import ReactModal from 'react-modal'
 import { useOpenCategoriesModal } from '@src/hooks'
+import { ParentCategory } from '@src/models/category'
 
 ReactModal.setAppElement('#__next')
 
@@ -24,7 +25,11 @@ const modalStyles = {
   }
 }
 
-export function AsideCategories () {
+export function AsideCategories ({
+  categories
+}: {
+  categories: ParentCategory[]
+}) {
   const { isOpen, closeModal } = useOpenCategoriesModal()
   return (
     <ReactModal
@@ -36,19 +41,26 @@ export function AsideCategories () {
       <div className='w-screen sm:w-[30rem] h-screen  dark:bg-[#0C1F34] dark:shadow-[#1a2332] bg-zinc-100   flex flex-col justify-between  animate-fade-right '>
         <section className='flex justify-between flex-none p-4 text-xl border-b-2 border-zinc-300'>
           <div className='flex items-center gap-3'>
-            <FaShoppingCart />
-            <span>0 Item</span>
+            <BiCategory />
+            <span>Categorias</span>
           </div>
           <button className='btn btn-ghost' onClick={closeModal}>
             <RiCloseCircleFill size={25} />
           </button>
         </section>
-        <section className='grow'>Main</section>
-        <section className='flex items-center justify-center flex-none p-6 '>
-          <button className='flex justify-between w-full btn'>
-            <span>Pagar</span>
-            <span>$ 0.00</span>
-          </button>
+        <section className='grid grow place-content-center'>
+          <ul className='flex flex-col items-center gap-4 '>
+            {categories.map((category) => {
+              if (category.id === 15) return null
+              return (
+                <li key={category.id} className='text-xl font-bold'>
+                  <button className='btn btn-ghost hover:bg-inf-tertiary peer'>
+                    {category.name}
+                  </button>
+                </li>
+              )
+            })}
+          </ul>
         </section>
       </div>
     </ReactModal>

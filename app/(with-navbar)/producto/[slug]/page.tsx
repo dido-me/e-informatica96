@@ -42,12 +42,15 @@ async function ProductBySlug ({ params }: Props) {
   if (!product) {
     if (!product) return redirect('/404')
   }
-  const productUrl = `${process.env.NEXT_PUBLIC_DOMAIN || ''}/producto/${
+
+  const productUrl = `${process.env.NEXT_PUBLIC_DOMAIN}/producto/${
     product.slug
   }`
+
   const whatsappMessage = encodeURIComponent(
     'Hola Informatica96 Quiero saber mas sobre sus productos. Puedes ver el producto aquí: '
   )
+
   const whatsappUrl = `${process.env.NEXT_PUBLIC_WHATSAPP_LINK}&text=${whatsappMessage}${productUrl}`
 
   return (
