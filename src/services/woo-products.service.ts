@@ -2,6 +2,123 @@
 import { Product } from '@src/models/product'
 import { authHeader } from '@src/utilities'
 
+export async function getProductsNews () {
+  try {
+    const response = await fetch(
+      `${process.env.WOOBASEURL}/products?per_page=4&order=desc`,
+      {
+        headers: {
+          Authorization: authHeader
+        },
+        next: {
+          revalidate: 20
+        }
+      }
+    )
+
+    if (!response.ok) {
+      console.error(`HTTP error! status: ${response.status}`)
+      return {
+        products: [] as Product[],
+        pages: 0
+      }
+    }
+
+    const totalPages = response.headers?.get('x-wp-totalpages') || '0'
+    const data = await response.json()
+
+    return {
+      products: data,
+      pages: parseInt(totalPages)
+    }
+  } catch (error) {
+    console.error(error)
+
+    return {
+      products: [] as Product[],
+      pages: -1
+    }
+  }
+}
+
+export async function getProductsDestacado () {
+  try {
+    const response = await fetch(
+      `${process.env.WOOBASEURL}/products?per_page=4&featured=true`,
+      {
+        headers: {
+          Authorization: authHeader
+        },
+        next: {
+          revalidate: 20
+        }
+      }
+    )
+
+    if (!response.ok) {
+      console.error(`HTTP error! status: ${response.status}`)
+      return {
+        products: [] as Product[],
+        pages: 0
+      }
+    }
+
+    const totalPages = response.headers?.get('x-wp-totalpages') || '0'
+    const data = await response.json()
+
+    return {
+      products: data,
+      pages: parseInt(totalPages)
+    }
+  } catch (error) {
+    console.error(error)
+
+    return {
+      products: [] as Product[],
+      pages: -1
+    }
+  }
+}
+
+export async function getProductsOferta () {
+  try {
+    const response = await fetch(
+      `${process.env.WOOBASEURL}/products?per_page=4&order=asc&orderby=price&category=284,285,286`,
+      {
+        headers: {
+          Authorization: authHeader
+        },
+        next: {
+          revalidate: 20
+        }
+      }
+    )
+
+    if (!response.ok) {
+      console.error(`HTTP error! status: ${response.status}`)
+      return {
+        products: [] as Product[],
+        pages: 0
+      }
+    }
+
+    const totalPages = response.headers?.get('x-wp-totalpages') || '0'
+    const data = await response.json()
+
+    return {
+      products: data,
+      pages: parseInt(totalPages)
+    }
+  } catch (error) {
+    console.error(error)
+
+    return {
+      products: [] as Product[],
+      pages: -1
+    }
+  }
+}
+
 export async function getProducts ({ page }:{page:string}) {
   try {
     const response = await fetch(
@@ -66,7 +183,7 @@ export async function getProductBySlug ({ slug }:{slug:string}) {
 
     const data = await response.json()
 
-    return data[0] as Product
+    return data[0]
   } catch (error) {
     console.error(error)
     return {} as Product
@@ -93,7 +210,7 @@ export async function getProductById ({ idProduct }:{idProduct:number}) {
 
     const data = await response.json()
 
-    return data as Product
+    return data
   } catch (error) {
     console.error(error)
     return {} as Product
@@ -120,7 +237,7 @@ export async function getProductBySKU ({ sku }:{sku:string}) {
 
     const data = await response.json()
 
-    return data[0] as Product
+    return data[0]
   } catch (error) {
     console.error(error)
     return {} as Product

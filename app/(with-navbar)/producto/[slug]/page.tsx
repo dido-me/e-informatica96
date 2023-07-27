@@ -6,13 +6,14 @@ import {
 import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { removeHtmlTags } from '@src/utilities'
+import { Product } from '@src/models/product'
 
 type Props = {
   params: { slug: string }
 }
 
 export async function generateMetadata ({ params }: Props): Promise<Metadata> {
-  const product = await getProductBySlug({ slug: params.slug })
+  const product : Product = await getProductBySlug({ slug: params.slug })
 
   if (!product) {
     return {
@@ -37,7 +38,7 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
 }
 
 async function ProductBySlug ({ params }: Props) {
-  const product = await getProductBySlug({ slug: params.slug })
+  const product : Product = await getProductBySlug({ slug: params.slug })
 
   if (!product) {
     if (!product) return redirect('/404')

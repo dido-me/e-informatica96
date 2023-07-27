@@ -5,36 +5,53 @@ import Link from 'next/link'
 
 function ProductCard ({ product }: { product: Product }) {
   return (
-    <article
-      key={product.id}
-      className='flex flex-col items-center gap-6 px-3 py-5 rounded dark:bg-inf-secondary bg-zinc-100 drop-shadow-md'
-    >
-      <div className='relative w-full'>
-        {calculateDiscount(product.regular_price, product.price) > 0 && (
-          <span className='absolute top-0 right-0 mr-3 mt-3 px-2 py-1 rounded bg-[#C18D21] text-slate-50'>
-            {`${calculateDiscount(product.regular_price, product.price)}%`}
-          </span>
-        )}
-        <Link href={`/producto/${product.slug}`}>
-          <Image
-            src={product.images[0].src}
-            alt='producto'
-            width={225}
-            height={146}
-            className='object-cover w-full rounded h-52'
-          />
-        </Link>
-      </div>
-      <div className='flex flex-col w-full gap-4'>
-        <span className='flex gap-2'>
-          <ins className='font-bold no-underline'>${product.price}</ins>
-          <del>${product.regular_price}</del>
+    <article className='border-[0.1rem] border-gray-400 py-6 px-8 rounded-lg flex flex-col justify-end h-full  relative'>
+      <main className='flex flex-col items-start gap-4 dark:text-white text-inf-primary'>
+        <span className='absolute top-0 left-0 px-2 py-1 mt-4 ml-10 font-bold rounded-lg bg-inf-quaternary text-inf-primary'>
+          {`-${calculateDiscount(product.regular_price, product.price)}%`}
         </span>
-        <p className='text-sm'>{product.name}</p>
-      </div>
-      <button className='flex items-center gap-2 btn btn-outline w-fit'>
-        <span className='text-xs'>Agregar al carrito</span>
-      </button>
+        <Image
+          src={product.images[0].src}
+          alt={product.slug}
+          className='object-contain w-full h-48'
+          width={225}
+          height={146}
+        />
+        <p>{product.name}</p>
+        <p className='flex gap-4 text-lg '>
+          <span className='font-bold text-[#E24031]'>{`US$ ${product.sale_price}`}</span>
+          <span className='text-[#A3A3A3] line-through'>{`US$ ${product.regular_price}`}</span>
+        </p>
+      </main>
+      <div className='after:bg-gray-400 before:bg-gray-400 divider' />
+      <footer className='flex flex-col gap-6 '>
+        <div className='flex flex-wrap gap-2'>
+          <span className='bg-[#F9B60C] text-[#513E0D] px-6 py-1 rounded-md'>
+            Envio Gratis
+          </span>
+          {product.tags.map((tag, index) => (
+            <span
+              key={index}
+              className='bg-[#46CCF6] text-[#005F7D] px-6 py-1 rounded-md'
+            >
+              {tag.name}
+            </span>
+          ))}
+          {product.categories.map((category, index) => (
+            <span
+              key={index}
+              className='bg-[#8A38C9] text-[#E6C6FF] px-6 py-1 rounded-md'
+            >
+              {category.name}
+            </span>
+          ))}
+        </div>
+        <div className='flex items-center justify-center'>
+          <Link href={`/producto/${product.slug}`} className='border-[0.1rem] dark:border-white border-inf-primary py-2 w-10/12 rounded-md dark:text-white text-inf-primary text-center '>
+            Agregar al carrito
+          </Link>
+        </div>
+      </footer>
     </article>
   )
 }

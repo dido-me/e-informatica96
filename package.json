@@ -28,6 +28,7 @@
     "react-instantsearch-hooks-web": "^6.45.0",
     "react-modal": "^3.16.1",
     "rxjs": "^7.8.1",
+    "swiper": "^10.0.4",
     "tailwindcss-animated": "^1.0.1",
     "typescript": "5.1.3"
   },
