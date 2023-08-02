@@ -14,7 +14,6 @@ module.exports = {
       },
       gridTemplateColumns: {
         'auto-fill-20rem': 'repeat(auto-fill, minmax(min(100%, 20rem), 1fr))',
-        'auto-fill-25rem': 'repeat(auto-fill, minmax(min(100%, 25rem), 1fr))',
         'auto-fill-37rem': 'repeat(auto-fill, minmax(min(100%, 37rem), 1fr))'
       }
     }

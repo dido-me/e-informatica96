@@ -43,6 +43,46 @@ export async function getCategories () {
     return allCategorys
   } catch (err) {
     console.error(err)
-    return [] as ParentCategory[]
+    return []
+  }
+}
+
+export async function getCategoriesByID (id: string) {
+  try {
+    const responseParent = await fetch(
+      `${process.env.WOOBASEURL}/products/categories/${id}`,
+      {
+        headers: {
+          Authorization: authHeader
+        },
+        next: {
+          revalidate: 20
+        }
+      }
+    )
+
+    const parent = await responseParent.json()
+
+    const responseChildrens = await fetch(
+      `${process.env.WOOBASEURL}/products/categories?parent=${id}&per_page=100`,
+      {
+        headers: {
+          Authorization: authHeader
+        },
+        next: {
+          revalidate: 20
+        }
+      }
+    )
+
+    const childrens = await responseChildrens.json()
+
+    return {
+      ...parent,
+      childrens
+    }
+  } catch (err) {
+    console.error(err)
+    return []
   }
 }

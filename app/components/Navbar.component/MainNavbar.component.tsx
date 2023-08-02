@@ -13,7 +13,7 @@ import { FaUser } from 'react-icons/fa'
 import { HiShoppingCart } from 'react-icons/hi'
 import { SearchBox } from '@app/components'
 import { ButtonMenu } from './ButtonMenu.component'
-import { LinkMenu } from './LinkMenu.component'
+import { IconLink } from './IconLink.component'
 
 export function MainNavbar () {
   const { isOpen: isOpenBoxSearch, changeState } = useOpenBox()
@@ -44,7 +44,7 @@ export function MainNavbar () {
         >
           <MdMenu className='text-3xl' />
         </button>
-        <LinkMenu
+        <IconLink
           Icon={FaUser}
           text='Mi Perfil'
           href='/sign_in'

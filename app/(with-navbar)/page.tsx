@@ -1,4 +1,11 @@
-import { Carousel, GroupDestacadosProducts, GroupNewsProducts, GroupOfertasProducts, PromoCards } from '@app/components'
+import {
+  BrandGroup,
+  Carousel,
+  GroupDestacadosProducts,
+  GroupNewsProducts,
+  GroupOfertasProducts,
+  PromoCards
+} from '@app/components'
 
 export const metadata = {
   title:
@@ -14,6 +21,7 @@ export default async function Home () {
         <GroupOfertasProducts />
         <GroupDestacadosProducts />
         <GroupNewsProducts />
+        <BrandGroup />
       </main>
     </>
   )

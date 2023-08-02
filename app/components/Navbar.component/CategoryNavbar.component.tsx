@@ -1,4 +1,5 @@
 import { ParentCategory } from '@src/models/category'
+import Link from 'next/link'
 
 export function CategoryNavbar ({ categories }: {categories: ParentCategory[]}) {
   return (
@@ -10,14 +11,14 @@ export function CategoryNavbar ({ categories }: {categories: ParentCategory[]}) 
             key={category.id}
             className='relative flex flex-col justify-center border-r-2 border-white grow last:border-r-0 '
           >
-            <button className='btn btn-ghost hover:bg-inf-tertiary peer'>
+            <Link href={`/categoria/${category.id}`} className='btn btn-ghost hover:bg-inf-tertiary peer'>
               {category.name}
-            </button>
+            </Link>
             <div className='z-10 hidden hover:block peer-hover:block'>
               <ul className='absolute  w-full py-4 bg-white dark:bg-[#001f3d] rounded-b-lg shadow-lg'>
                 {category.childrens.map((subCategory) => (
                   <li key={subCategory.id} className='px-4 py-2 '>
-                    <a href='#' className='block w-full hover:text-inf-quaternary'>{subCategory.name}</a>
+                    <Link href={`/categoria/${category.id}?childrenCategory=${subCategory.id}`} className='block w-full hover:text-inf-quaternary'>{subCategory.name}</Link>
                   </li>
                 ))}
               </ul>

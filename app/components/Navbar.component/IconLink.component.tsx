@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import { ComponentType, FC } from 'react'
 
-interface LinkMenuProps {
+interface IconLinkProps {
     Icon: ComponentType<{ className: string }>
     text: string
     href: string
     className?: string
   }
 
-export const LinkMenu: FC<LinkMenuProps> = ({
+export const IconLink: FC<IconLinkProps> = ({
   Icon,
   text,
   href,
