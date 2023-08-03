@@ -22,7 +22,7 @@ export function ListTags ({ tags }: { tags: TagsModel[] }) {
   }
 
   return (
-    <aside className='dark:text-white text-inf-primary'>
+    <aside className='hidden dark:text-white text-inf-primary xl:block'>
       <h1 className='p-0 m-0'>Marcas</h1>
       <div className='after:bg-inf-primary before:bg-inf-primary dark:after:bg-white dark:before:bg-white divider' />
       <ul className='flex flex-col gap-4 pl-5 '>

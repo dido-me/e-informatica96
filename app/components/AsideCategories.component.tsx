@@ -5,6 +5,7 @@ import { RiCloseCircleFill } from 'react-icons/ri'
 import ReactModal from 'react-modal'
 import { useOpenCategoriesModal } from '@src/hooks'
 import { ParentCategory } from '@src/models/category'
+import Link from 'next/link'
 
 ReactModal.setAppElement('#__next')
 
@@ -54,9 +55,9 @@ export function AsideCategories ({
               if (category.id === 15) return null
               return (
                 <li key={category.id} className='text-xl font-bold'>
-                  <button className='btn btn-ghost hover:bg-inf-tertiary peer'>
+                  <Link href={`/categoria/${category.id}`} className='btn btn-ghost hover:bg-inf-tertiary peer'>
                     {category.name}
-                  </button>
+                  </Link>
                 </li>
               )
             })}
