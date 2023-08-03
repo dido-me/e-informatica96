@@ -7,6 +7,8 @@ import {
   PromoCards
 } from '@app/components'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title:
     'Ecommerce | Informatica 96 | Alquiler y Venta de Server Switch Transceiver Computadora | Importador y Distribuidor'

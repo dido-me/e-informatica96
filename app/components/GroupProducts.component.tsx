@@ -1,5 +1,6 @@
 import { getProductsDestacado, getProductsNews, getProductsOferta } from '@src/services'
 import { ListHorizontalProducts } from './ListHorizontalProducts.component'
+import Link from 'next/link'
 
 export async function GroupOfertasProducts () {
   const { products } = await getProductsOferta()
@@ -11,12 +12,12 @@ export async function GroupOfertasProducts () {
         <div className='grow'>
           <span className='block w-full border-[0.1rem] dark:border-white border-inf-primary' />
         </div>
-        <a
-          href='#'
+        <Link
+          href='/categoria/285'
           className='px-4 py-1 text-xs border-2 xl:text-lg dark:border-white border-inf-primary rounded-xl'
         >
           ver mas
-        </a>
+        </Link>
       </div>
       <ListHorizontalProducts products={products} />
     </section>
@@ -32,12 +33,12 @@ export async function GroupDestacadosProducts () {
         <div className='grow'>
           <span className='block w-full border-[0.1rem] dark:border-white border-inf-primary' />
         </div>
-        <a
-          href='#'
+        <Link
+          href='/categoria/285'
           className='px-4 py-1 text-xs border-2 xl:text-lg dark:border-white border-inf-primary rounded-xl'
         >
           ver mas
-        </a>
+        </Link>
       </div>
       <ListHorizontalProducts products={products} />
     </section>
@@ -53,12 +54,12 @@ export async function GroupNewsProducts () {
         <div className='grow'>
           <span className='block w-full border-[0.1rem] dark:border-white border-inf-primary' />
         </div>
-        <a
-          href='#'
+        <Link
+          href='/categoria/285'
           className='px-4 py-1 text-xs border-2 xl:text-lg dark:border-white border-inf-primary rounded-xl'
         >
           ver mas
-        </a>
+        </Link>
       </div>
       <ListHorizontalProducts products={products} />
     </section>

@@ -55,7 +55,7 @@ async function ProductBySlug ({ params }: Props) {
   const whatsappUrl = `${process.env.NEXT_PUBLIC_WHATSAPP_LINK}&text=${whatsappMessage}${productUrl}`
 
   return (
-    <main className='flex flex-col items-center pb-10 xl:pb-0'>
+    <main className='flex flex-col items-center pb-10 mt-10 xl:pb-0'>
       <div className='flex gap-10  w-[70vw] flex-col  xl:flex-row '>
         <section className='w-full xl:w-[50%]'>
           <CarouselProduct images={product.images} nameProduct={product.slug} />

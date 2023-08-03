@@ -1,22 +1,15 @@
 'use client'
 
+import { useCreateQuery } from '@src/hooks'
 import { TagsModel } from '@src/models/tag'
-import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import { ChangeEvent, useCallback } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
+import { ChangeEvent } from 'react'
 
 export function ListTags ({ tags }: { tags: TagsModel[] }) {
   const router = useRouter()
   const pathname = usePathname()
-  const searchParams = useSearchParams()!
 
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString())
-      params.set(name, value)
-      return params.toString()
-    },
-    [searchParams]
-  )
+  const { createQueryString, searchParams } = useCreateQuery()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
@@ -29,10 +22,10 @@ export function ListTags ({ tags }: { tags: TagsModel[] }) {
   }
 
   return (
-    <aside className='text-white'>
+    <aside className='dark:text-white text-inf-primary'>
       <h1 className='p-0 m-0'>Marcas</h1>
-      <div className='after:bg-white before:bg-white divider' />
-      <ul className='flex flex-col gap-4 pl-5 text-white'>
+      <div className='after:bg-inf-primary before:bg-inf-primary dark:after:bg-white dark:before:bg-white divider' />
+      <ul className='flex flex-col gap-4 pl-5 '>
         <li className='flex gap-4'>
           <input
             type='radio'
@@ -51,10 +44,10 @@ export function ListTags ({ tags }: { tags: TagsModel[] }) {
               <input
                 type='radio'
                 id={tag.slug}
-                value={tag.slug}
+                value={tag.id.toString()}
                 name='brandsProducts'
                 onChange={handleChange}
-                checked={searchParams.get('tag') === tag.slug}
+                checked={searchParams.get('tag') === tag.id.toString()}
               />
               <label htmlFor={tag.slug}>{tag.name}</label>
             </li>

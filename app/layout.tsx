@@ -17,11 +17,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout ({ children }: { children: ReactNode }) {
   return (
-    <html lang='es' id='__next'>
+    <html lang='es'>
       <GoogleAnalytics
         GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ''}
       />
-      <body className='min-h-screen dark:bg-inf-primary '>
+      <body className='min-h-screen dark:bg-inf-primary' id='__next'>
         {children}
         <CookieBanner />
       </body>

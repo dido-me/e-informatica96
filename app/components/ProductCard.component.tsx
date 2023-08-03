@@ -6,7 +6,7 @@ import Link from 'next/link'
 function ProductCard ({ product }: { product: Product }) {
   return (
     <article className='border-[0.1rem] border-gray-400 py-6 px-8 rounded-lg flex flex-col justify-end h-full  relative'>
-      <main className='flex flex-col items-start gap-4 dark:text-white text-inf-primary'>
+      <Link href={`/producto/${product.slug}`} className='flex flex-col items-start gap-4 dark:text-white text-inf-primary'>
         <span className='absolute top-0 left-0 px-2 py-1 mt-4 ml-10 font-bold rounded-lg bg-inf-quaternary text-inf-primary'>
           {`-${calculateDiscount(product.regular_price, product.price)}%`}
         </span>
@@ -17,12 +17,12 @@ function ProductCard ({ product }: { product: Product }) {
           width={225}
           height={146}
         />
-        <p>{product.name}</p>
+        <p className='hover:text-inf-quaternary'>{product.name}</p>
         <p className='flex gap-4 text-lg '>
           <span className='font-bold text-[#E24031]'>{`US$ ${product.sale_price}`}</span>
           <span className='text-[#A3A3A3] line-through'>{`US$ ${product.regular_price}`}</span>
         </p>
-      </main>
+      </Link>
       <div className='after:bg-gray-400 before:bg-gray-400 divider' />
       <footer className='flex flex-col gap-6 '>
         <div className='flex flex-wrap gap-2'>
@@ -47,7 +47,10 @@ function ProductCard ({ product }: { product: Product }) {
           ))}
         </div>
         <div className='flex items-center justify-center'>
-          <Link href={`/producto/${product.slug}`} className='border-[0.1rem] dark:border-white border-inf-primary py-2 w-10/12 rounded-md dark:text-white text-inf-primary text-center '>
+          <Link
+            href={`/producto/${product.slug}`}
+            className='border-[0.1rem] dark:border-white border-inf-primary py-2 w-10/12 rounded-md dark:text-white text-inf-primary text-center '
+          >
             Agregar al carrito
           </Link>
         </div>
