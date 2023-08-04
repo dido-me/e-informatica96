@@ -4,6 +4,7 @@ import { FaShoppingCart } from 'react-icons/fa'
 import { RiCloseCircleFill } from 'react-icons/ri'
 import ReactModal from 'react-modal'
 import { useCart, useOpenShoppingCart } from '@src/hooks'
+import Link from 'next/link'
 
 ReactModal.setAppElement('#__next')
 
@@ -43,7 +44,7 @@ function AsideShopping () {
         <section className='flex justify-between flex-none p-4 text-xl border-b-2 border-zinc-300'>
           <div className='flex items-center gap-3'>
             <FaShoppingCart />
-            <span>{cart.length} Item</span>
+            <span>{cart.length} Producto(s)</span>
           </div>
           <button className='btn btn-ghost' onClick={closeModal}>
             <RiCloseCircleFill size={25} />
@@ -72,9 +73,18 @@ function AsideShopping () {
                       -
                     </button>
                   </header>
-                  <main className='flex items-center flex-1 gap-2'>
+                  <Link
+                    href={`/producto/${product.slug}`}
+                    onClick={closeModal}
+                    className='flex items-center flex-1 gap-2'
+                  >
                     <div>
-                      <img src={product.images[0].src} alt={product.name} width={100} height={100} />
+                      <img
+                        src={product.images[0].src}
+                        alt={product.name}
+                        width={100}
+                        height={100}
+                      />
                     </div>
                     <div className='flex flex-col gap-2 text-xs'>
                       <span>{product.name}</span>
@@ -84,9 +94,12 @@ function AsideShopping () {
                       <span>$</span>
                       <span>{parseInt(product.price) * product.quantity}</span>
                     </div>
-                  </main>
+                  </Link>
                   <footer>
-                    <button className='p-0 btn btn-ghost ' onClick={() => removeProduct(product)}>
+                    <button
+                      className='p-0 btn btn-ghost '
+                      onClick={() => removeProduct(product)}
+                    >
                       <RiCloseCircleFill size={15} />
                     </button>
                   </footer>
@@ -96,10 +109,10 @@ function AsideShopping () {
           </ul>
         </section>
         <section className='flex items-center justify-center flex-none p-6 '>
-          <button className='flex justify-between w-full btn'>
+          <Link href='/checkout/cart' onClick={closeModal} className='flex justify-between w-full btn'>
             <span>Pagar</span>
             <span>$ {totalPrice}</span>
-          </button>
+          </Link>
         </section>
       </div>
     </ReactModal>
