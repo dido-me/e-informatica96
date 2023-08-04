@@ -1,6 +1,7 @@
 export * from './auth-header-api-woo'
 export * from './calculate-discount'
 export * from './gtagHelper'
+export * from './has-product'
 export * from './helpers'
 export * from './keywords'
 export * from './removeHtmlTags'

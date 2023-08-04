@@ -14,6 +14,7 @@ import { HiShoppingCart } from 'react-icons/hi'
 import { SearchBox } from '@app/components'
 import { ButtonMenu } from './ButtonMenu.component'
 import { IconLink } from './IconLink.component'
+import { ButtonCart } from './ButtonCart.component'
 
 export function MainNavbar () {
   const { isOpen: isOpenBoxSearch, changeState } = useOpenBox()
@@ -50,7 +51,7 @@ export function MainNavbar () {
           href='/sign_in'
           className='flex gap-1 xl:gap-3 btn btn-ghost text-start'
         />
-        <ButtonMenu
+        <ButtonCart
           Icon={HiShoppingCart}
           text='Carrito Compras'
           className='flex gap-1 xl:gap-3 btn btn-ghost text-start '

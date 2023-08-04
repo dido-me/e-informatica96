@@ -112,3 +112,7 @@ export interface Product {
   has_options: boolean
   _links: Links
 }
+
+export interface ProductModelWithQuantity extends Product {
+  quantity: number
+}

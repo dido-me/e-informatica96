@@ -2,11 +2,15 @@ import { Product } from '@src/models/product'
 import { calculateDiscount } from '@src/utilities'
 import Image from 'next/image'
 import Link from 'next/link'
+import LinkStateCart from './LinkStateCart.component'
 
-function ProductCard ({ product }: { product: Product }) {
+export function ProductCard ({ product }: { product: Product }) {
   return (
     <article className='border-[0.1rem] border-gray-400 py-6 px-8 rounded-lg flex flex-col justify-end h-full  relative'>
-      <Link href={`/producto/${product.slug}`} className='flex flex-col items-start gap-4 dark:text-white text-inf-primary'>
+      <Link
+        href={`/producto/${product.slug}`}
+        className='flex flex-col items-start gap-4 dark:text-white text-inf-primary'
+      >
         <span className='absolute top-0 left-0 px-2 py-1 mt-4 ml-10 font-bold rounded-lg bg-inf-quaternary text-inf-primary'>
           {`-${calculateDiscount(product.regular_price, product.price)}%`}
         </span>
@@ -47,16 +51,9 @@ function ProductCard ({ product }: { product: Product }) {
           ))}
         </div>
         <div className='flex items-center justify-center'>
-          <Link
-            href={`/producto/${product.slug}`}
-            className='border-[0.1rem] dark:border-white border-inf-primary py-2 w-10/12 rounded-md dark:text-white text-inf-primary text-center '
-          >
-            Agregar al carrito
-          </Link>
+          <LinkStateCart product={product} />
         </div>
       </footer>
     </article>
   )
 }
-
-export default ProductCard

@@ -55,7 +55,11 @@ export function AsideCategories ({
               if (category.id === 15) return null
               return (
                 <li key={category.id} className='text-xl font-bold'>
-                  <Link href={`/categoria/${category.id}`} className='btn btn-ghost hover:bg-inf-tertiary peer'>
+                  <Link
+                    href={`/categoria/${category.id}`}
+                    onClick={closeModal}
+                    className='btn btn-ghost hover:bg-inf-tertiary peer'
+                  >
                     {category.name}
                   </Link>
                 </li>

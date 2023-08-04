@@ -1,4 +1,5 @@
 import { getProductBySlug } from '@src/services'
+import dynamic from 'next/dynamic'
 import {
   CarouselProduct,
   RelatedProductCard
@@ -7,13 +8,14 @@ import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { removeHtmlTags } from '@src/utilities'
 import { Product } from '@src/models/product'
+const ButtonCart = dynamic(() => import('../components/ButtonCart.component'), { ssr: false })
 
 type Props = {
   params: { slug: string }
 }
 
 export async function generateMetadata ({ params }: Props): Promise<Metadata> {
-  const product : Product = await getProductBySlug({ slug: params.slug })
+  const product: Product = await getProductBySlug({ slug: params.slug })
 
   if (!product) {
     return {
@@ -38,15 +40,13 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
 }
 
 async function ProductBySlug ({ params }: Props) {
-  const product : Product = await getProductBySlug({ slug: params.slug })
+  const product: Product = await getProductBySlug({ slug: params.slug })
 
   if (!product) {
     if (!product) return redirect('/404')
   }
 
-  const productUrl = `${process.env.NEXT_PUBLIC_DOMAIN}/producto/${
-    product.slug
-  }`
+  const productUrl = `${process.env.NEXT_PUBLIC_DOMAIN}/producto/${product.slug}`
 
   const whatsappMessage = encodeURIComponent(
     'Hola Informatica96 Quiero saber mas sobre sus productos. Puedes ver el producto aquí: '
@@ -69,7 +69,7 @@ async function ProductBySlug ({ params }: Props) {
             </ins>
             <del>${product.regular_price}</del>
           </span>
-          <button className='btn btn-primary'>Agregar al carrito</button>
+          <ButtonCart product={product} />
           <a
             href={whatsappUrl}
             className='px-2 py-4 font-medium text-center text-white transition-colors duration-200 bg-green-600 rounded hover:bg-green-700'
