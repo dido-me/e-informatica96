@@ -12,7 +12,7 @@ export default function CheckOutPaymentPage () {
   }, [])
 
   return (
-    <main className='flex flex-col w-11/12 m-auto mt-10 xl:flex-row'>
+    <main className='flex flex-col w-11/12 m-auto my-10 xl:flex-row'>
       <section className='flex flex-col w-full gap-8 px-4 py-4 xl:w-7/12'>
         <IdentCard />
         <PagoCard />
