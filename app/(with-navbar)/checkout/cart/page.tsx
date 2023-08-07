@@ -1,124 +1,162 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 
+import { HiOutlinePlusSm, HiOutlineMinusSm } from 'react-icons/hi'
+import { IoCloseCircle } from 'react-icons/io5'
+
 import { useCart } from '@src/hooks'
+import { useContext, useEffect, useState } from 'react'
+import { ProductModelWithQuantity } from '@src/models/product'
+import Link from 'next/link'
+import { CheckOutContext } from '@src/contexts'
 
 export default function CheckOutCartPage () {
-  const { cart } = useCart()
-  return (
-    <section className='flex w-11/12 m-auto mt-10'>
-      <div className='w-8/12'>
-        <div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
-          <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
-            <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
-              <tr>
-                <th scope='col' className='px-6 py-3'>
-                  <span className='sr-only'>Image</span>
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  Product
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  Qty
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  Price
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody>
+  const [products, setProducts] = useState<ProductModelWithQuantity[]>([])
+  const { cart, addProduct, restOneProduct, removeProduct } = useCart()
+  const { changeStep } = useContext(CheckOutContext)
 
-              {
-                cart.map((product) => (
-                  <tr key={product.id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-                    <td className='w-32 p-4'>
-                      <img
-                        src={product.images[0].src}
-                        alt={product.name}
-                      />
-                    </td>
-                    <td className='px-6 py-4 font-semibold text-gray-900 dark:text-white'>
-                      {product.name}
-                    </td>
-                    <td className='px-6 py-4'>
-                      <div className='flex items-center space-x-3'>
+  const totalPrices = products.reduce(
+    (acc, product) => acc + parseInt(product.price) * product.quantity,
+    0
+  )
+
+  useEffect(() => {
+    setProducts(cart)
+
+    changeStep(1)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cart])
+
+  return (
+    <section className='flex flex-col w-11/12 gap-6 m-auto mt-10 xl:flex-row'>
+      <div className='relative w-full overflow-x-auto xl:w-8/12' id='cartPrint'>
+        <table className='w-full text-sm text-left text-white uppercase'>
+          <thead className='border-b-2'>
+            <tr>
+              <th scope='col' className='px-6 py-3 '>
+                Producto
+              </th>
+              <th scope='col' className='hidden px-6 py-3 xl:table-cell'>
+                Cantidad
+              </th>
+              <th scope='col' className='hidden px-6 py-3 xl:table-cell'>
+                Precio
+              </th>
+              <th scope='col' className='hidden px-6 py-3 xl:table-cell' />
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product) => (
+              <tr key={product.id}>
+                <th
+                  scope='row'
+                  className='relative flex justify-between gap-4 px-6 py-4 font-medium xl:justify-start whitespace-nowrap'
+                >
+                  <img
+                    src={product.images[0].src}
+                    alt={product.name}
+                    className='object-contain w-24 h-24'
+                  />
+                  <div className='flex flex-col gap-4'>
+                    <h3 className='font-bold'>{product.name}</h3>
+                    <p>SKU: {product.sku}</p>
+                    <section className='flex justify-between w-full xl:hidden'>
+                      <div className='flex items-center gap-2'>
                         <button
-                          className='inline-flex items-center justify-center w-6 h-6 p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
-                          type='button'
+                          className='text-inf-quaternary hover:bg-inf-secondary disabled:opacity-50 disabled:cursor-not-allowed'
+                          onClick={() => restOneProduct(product)}
+                          disabled={product.quantity === 1}
                         >
-                          <span className='sr-only'>Quantity button</span>
-                          <svg
-                            className='w-3 h-3'
-                            aria-hidden='true'
-                            xmlns='http://www.w3.org/2000/svg'
-                            fill='none'
-                            viewBox='0 0 18 2'
-                          >
-                            <path
-                              stroke='currentColor'
-                              stroke-linecap='round'
-                              stroke-linejoin='round'
-                              stroke-width='2'
-                              d='M1 1h16'
-                            />
-                          </svg>
+                          <HiOutlineMinusSm size={25} />
                         </button>
-                        <div>
-                          <input
-                            type='number'
-                            id='first_product'
-                            className='bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                            placeholder='1'
-                            value={product.quantity}
-                            required
-                          />
-                        </div>
+                        <span>{product.quantity}</span>
                         <button
-                          className='inline-flex items-center justify-center w-6 h-6 p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
-                          type='button'
+                          onClick={() => addProduct(product)}
+                          className='text-inf-quaternary hover:bg-inf-secondary'
                         >
-                          <span className='sr-only'>Quantity button</span>
-                          <svg
-                            className='w-3 h-3'
-                            aria-hidden='true'
-                            xmlns='http://www.w3.org/2000/svg'
-                            fill='none'
-                            viewBox='0 0 18 18'
-                          >
-                            <path
-                              stroke='currentColor'
-                              stroke-linecap='round'
-                              stroke-linejoin='round'
-                              stroke-width='2'
-                              d='M9 1v16M1 9h16'
-                            />
-                          </svg>
+                          <HiOutlinePlusSm size={25} />
                         </button>
                       </div>
-                    </td>
-                    <td className='flex items-center justify-center px-6 py-4 font-semibold text-gray-900 dark:text-white'>
-                      <span>$</span>
-                      <span>{parseInt(product.price) * product.quantity}</span>
-                    </td>
-                    <td className='px-6 py-4'>
-                      <a
-                        href='#'
-                        className='font-medium text-red-600 dark:text-red-500 hover:underline'
-                      >
-                        Eliminar
-                      </a>
-                    </td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
+                      <div className='flex flex-col items-end gap-2'>
+                        <p className='flex flex-col items-end text-slate-400'>
+                          <span>${product.price}</span>
+                          <span className='text-[0.6rem]'>c/u</span>
+                        </p>
+                        <p>
+                          {`$${parseInt(product.price) * product.quantity}`}
+                        </p>
+                      </div>
+                    </section>
+                  </div>
+                  <button
+                    className='absolute top-0 right-0 block mt-3 text-red-400 hover:text-red-700 xl:hidden'
+                    onClick={() => removeProduct(product)}
+                  >
+                    <IoCloseCircle size={20} />
+                  </button>
+                </th>
+                <td className='hidden px-6 py-4 xl:table-cell'>
+                  <div className='flex items-center justify-center gap-2 font-extrabold'>
+                    <button
+                      className='text-inf-quaternary hover:bg-inf-secondary disabled:opacity-50 disabled:cursor-not-allowed'
+                      onClick={() => restOneProduct(product)}
+                      disabled={product.quantity === 1}
+                    >
+                      <HiOutlineMinusSm size={25} />
+                    </button>
+                    <span>{product.quantity}</span>
+                    <button
+                      onClick={() => addProduct(product)}
+                      className='text-inf-quaternary hover:bg-inf-secondary'
+                    >
+                      <HiOutlinePlusSm size={25} />
+                    </button>
+                  </div>
+                </td>
+                <td className='hidden px-6 py-4 xl:table-cell'>
+                  <div className='flex flex-col gap-2'>
+                    <span>
+                      {`$${parseInt(product.price) * product.quantity}`}
+                    </span>
+                    <span className='text-xs text-slate-400'>{`$${product.price} x c/u`}</span>
+                  </div>
+                </td>
+                <td className='hidden px-6 py-4 xl:table-cell'>
+                  <button
+                    className='text-red-400 hover:text-red-700'
+                    onClick={() => removeProduct(product)}
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className='w-full xl:w-4/12'>
+        <h3 className='py-3 font-bold text-center text-white uppercase '>
+          Resumen de Compra
+        </h3>
+        <div className='flex justify-between py-5 border-t-2'>
+          <span>SubTotal:</span>
+          <span>${totalPrices}</span>
+        </div>
+        <div className='flex justify-between py-5 border-t-2'>
+          <span>Total:</span>
+          <span>${totalPrices}</span>
+        </div>
+        <div className='flex flex-col gap-4'>
+          <Link
+            href='/checkout/payment'
+            onClick={() => changeStep(2)}
+            className='w-full text-white btn'
+          >
+            Finalizar Compra
+          </Link>
+          <button className='w-full btn btn-info'>Imprimir</button>
         </div>
       </div>
-      <div className='w-4/12'>resumen</div>
     </section>
   )
 }
