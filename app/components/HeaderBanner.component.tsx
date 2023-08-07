@@ -3,7 +3,7 @@ import { PE as FlagPE } from 'country-flag-icons/react/3x2'
 import { formartNumber } from '@src/utilities'
 
 export function HeaderBanner () {
-  const numberFormart = formartNumber('954310073')
+  const numberFormart = formartNumber('974017977')
   return (
     <a
       target='_blank'

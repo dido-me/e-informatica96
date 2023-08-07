@@ -9,6 +9,7 @@ import { useContext, useEffect, useState } from 'react'
 import { ProductModelWithQuantity } from '@src/models/product'
 import Link from 'next/link'
 import { CheckOutContext } from '@src/contexts'
+import { PrintButton } from './components'
 
 export default function CheckOutCartPage () {
   const [products, setProducts] = useState<ProductModelWithQuantity[]>([])
@@ -154,7 +155,7 @@ export default function CheckOutCartPage () {
           >
             Finalizar Compra
           </Link>
-          <button className='w-full btn btn-info'>Imprimir</button>
+          <PrintButton />
         </div>
       </div>
     </section>
