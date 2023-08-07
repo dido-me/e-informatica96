@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import {
   AsideCategories,
   AsideShopping,
+  Footer,
   HeaderBanner,
   Navbar,
   WhatsAppChatButton
@@ -35,6 +36,7 @@ export default async function RootLayout ({ children }: { children: ReactNode })
       <AsideCategories categories={dataCategories} />
       <AsideShopping />
       <WhatsAppChatButton />
+      <Footer />
     </>
   )
 }
