@@ -30,7 +30,7 @@ export default function CheckOutCartPage () {
   return (
     <section className='flex flex-col w-11/12 gap-6 m-auto my-10 xl:flex-row '>
       <div className='relative w-full overflow-x-auto xl:w-8/12' id='cartPrint'>
-        <table className='w-full text-sm text-left text-white uppercase'>
+        <table className='w-full text-sm text-left uppercase text-inf-primary dark:text-white'>
           <thead className='border-b-2'>
             <tr>
               <th scope='col' className='px-6 py-3 '>
