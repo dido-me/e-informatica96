@@ -9,6 +9,11 @@ export function Footer () {
           <Link href='/' className='flex items-center mb-4 sm:mb-0'>
             <LogoInformatica className='h-8 mr-3' />
           </Link>
+          <span>
+            <a href='mailto:commercejs@informatica96.com'>
+              commercejs@informatica96.com
+            </a>
+          </span>
           <ul className='flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400'>
             <li>
               <Link
