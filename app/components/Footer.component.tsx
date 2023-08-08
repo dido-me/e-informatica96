@@ -15,7 +15,7 @@ export function Footer () {
                 href='/terminos-y-condiciones'
                 className='mr-4 hover:underline md:mr-6'
               >
-                Términos y condiciones
+                Políticas de devolución y reembolso
               </Link>
             </li>
 
