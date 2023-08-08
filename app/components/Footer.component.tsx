@@ -25,6 +25,15 @@ export function Footer () {
             </li>
 
             <li>
+              <Link
+                href='/terminos-y-condiciones'
+                className='mr-4 hover:underline md:mr-6'
+              >
+                Términos y condiciones
+              </Link>
+            </li>
+
+            <li>
               <a href='/about' className='hover:underline'>
                 Contáctanos
               </a>
