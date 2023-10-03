@@ -4,7 +4,7 @@ import { authHeader } from '@src/utilities'
 export async function getProductsNews () {
   try {
     const response = await fetch(
-      `${process.env.WOOBASEURL}/products?per_page=4&order=desc`,
+      `${process.env.WOOBASEURL}/products?per_page=6&order=desc`,
       {
         headers: {
           Authorization: authHeader
@@ -43,7 +43,7 @@ export async function getProductsNews () {
 export async function getProductsDestacado () {
   try {
     const response = await fetch(
-      `${process.env.WOOBASEURL}/products?per_page=4&featured=true`,
+      `${process.env.WOOBASEURL}/products?per_page=6&featured=true`,
       {
         headers: {
           Authorization: authHeader
@@ -82,7 +82,7 @@ export async function getProductsDestacado () {
 export async function getProductsOferta () {
   try {
     const response = await fetch(
-      `${process.env.WOOBASEURL}/products?per_page=4&order=asc&orderby=price&category=284,285,286`,
+      `${process.env.WOOBASEURL}/products?per_page=6&order=asc&orderby=price&category=284,285,286`,
       {
         headers: {
           Authorization: authHeader

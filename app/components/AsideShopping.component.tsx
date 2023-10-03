@@ -5,6 +5,7 @@ import { RiCloseCircleFill } from 'react-icons/ri'
 import ReactModal from 'react-modal'
 import { useCart, useOpenShoppingCart } from '@src/hooks'
 import Link from 'next/link'
+import { calculateTotalPrice, formatPrice } from '@src/utilities'
 
 ReactModal.setAppElement('#__next')
 
@@ -29,9 +30,7 @@ function AsideShopping () {
   const { isOpen, closeModal } = useOpenShoppingCart()
   const { cart, addProduct, restOneProduct, removeProduct } = useCart()
 
-  const totalPrice = cart.reduce((acc, product) => {
-    return acc + parseInt(product.price) * product.quantity
-  }, 0)
+  const totalPrice = calculateTotalPrice(cart)
 
   return (
     <ReactModal
@@ -88,7 +87,7 @@ function AsideShopping () {
                     </div>
                     <div className='flex flex-col gap-2 text-xs'>
                       <span>{product.name}</span>
-                      <span>$ {product.price}</span>
+                      <span>{formatPrice(product.price)}</span>
                     </div>
                     <div className='flex gap-2 text-xs'>
                       <span>$</span>
@@ -109,7 +108,7 @@ function AsideShopping () {
           </ul>
         </section>
         <section className='flex items-center justify-center flex-none p-6 '>
-          <Link href='/checkout/cart' onClick={closeModal} className='flex justify-between w-full btn'>
+          <Link href='/checkout' onClick={closeModal} className='flex justify-between w-full btn'>
             <span>Pagar</span>
             <span>$ {totalPrice}</span>
           </Link>

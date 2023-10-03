@@ -2,7 +2,7 @@
 import { ProductCard } from '@app/components'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Product } from '@src/models/product'
-import { Autoplay } from 'swiper/modules'
+import { Autoplay, Navigation } from 'swiper/modules'
 
 import 'swiper/css'
 
@@ -10,14 +10,15 @@ export function ListHorizontalProducts ({ products }: { products: Product[] }) {
   return (
     <Swiper
       slidesPerView={4}
-      spaceBetween={20}
+      spaceBetween={40}
       freeMode
       className='w-full h-[36rem]'
+      navigation
       autoplay={{
         delay: 2500,
         disableOnInteraction: false
       }}
-      modules={[Autoplay]}
+      modules={[Navigation, Autoplay]}
       breakpoints={{
         300: {
           slidesPerView: 1
