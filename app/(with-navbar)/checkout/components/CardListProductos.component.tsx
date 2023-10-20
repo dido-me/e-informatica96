@@ -3,7 +3,7 @@
 import { useCart } from '@src/hooks'
 import { calculateTotalPrice, formatPrice } from '@src/utilities'
 
-export function CardListProductos () {
+export default function CardListProductos () {
   const { cart } = useCart()
 
   const totalPrice = calculateTotalPrice(cart)
