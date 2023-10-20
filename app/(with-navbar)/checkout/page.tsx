@@ -1,8 +1,3 @@
-import dynamic from 'next/dynamic'
-const CardListProductos = dynamic(
-  () => import('./components/CardListProductos.component'),
-  { ssr: false }
-)
 
 export default function CheckOutPage () {
   return (
@@ -26,9 +21,7 @@ export default function CheckOutPage () {
           </div>
         </div>
       </div>
-      <div className='flex-1 border border-inf-quaternary'>
-        <CardListProductos />
-      </div>
+      <div className='flex-1 border border-inf-quaternary' />
     </main>
   )
 }
