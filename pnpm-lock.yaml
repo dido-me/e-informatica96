@@ -68,6 +68,12 @@ dependencies:
   rxjs:
     specifier: ^7.8.1
     version: 7.8.1
+  sweetalert2:
+    specifier: 11.7.32
+    version: 11.7.32
+  sweetalert2-react-content:
+    specifier: 5.0.7
+    version: 5.0.7(react-dom@18.2.0)(react@18.2.0)(sweetalert2@11.7.32)
   swiper:
     specifier: ^10.0.4
     version: 10.0.4
@@ -3873,6 +3879,22 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /sweetalert2-react-content@5.0.7(react-dom@18.2.0)(react@18.2.0)(sweetalert2@11.7.32):
+    resolution: {integrity: sha512-8Fk82Mpk45lFXpJWKIFF/lq8k/dJKDDQGFcuqVosaL/qRdViyAs5+u37LoTGfnOIvf+rfQB3PAXcp1XLLn+0ew==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+      sweetalert2: ^11.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      sweetalert2: 11.7.32
+    dev: false
+
+  /sweetalert2@11.7.32:
+    resolution: {integrity: sha512-44tNNe2oLe7T94mT6dus4hc9G7qg6jZU/K5qZzpNS6e5HGPrSF6Kie6oZ7B5puIJydB34V2h/8f5EhIFivYo4A==}
+    dev: false
 
   /swiper@10.0.4:
     resolution: {integrity: sha512-DlNR3KiaVkPep6RraZ2tNr7lvyuzELuR+4NZr4wO42t0UworIO3DxDlz8b5Q3uUioh7cJad99EdRJLkPF+r8Ag==}
